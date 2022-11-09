@@ -23,7 +23,7 @@ public class ImagenServiceImpl implements ImagenService{
 
     @Override
     public List<?> imgByPublc(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return img.findById(id);
     }
 
     @Override
@@ -37,8 +37,9 @@ public class ImagenServiceImpl implements ImagenService{
     }
 
     @Override
-    public List<?> save(Imagen img) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Imagen save(Imagen image) {
+    	
+        return img.save(image);
     }
 
     @Override

@@ -16,6 +16,6 @@ public interface ImagenService {
     public List<?> imgByPublc(int id);
     public List<Imagen> imgAll();
     public Optional<?> oneImage(int id);
-    public List<?> save(Imagen img);
+    public Imagen save(Imagen image);
     public void deleteById(int id);
 }
