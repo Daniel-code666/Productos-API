@@ -18,6 +18,6 @@ public interface ImagenService {
     public List<Imagen> imgAll();
     public Optional<?> oneImage(int id);
     public Imagen save(Imagen image);
-    public void deleteById(int id);
-    public void deleteByProductId(int id);
+    public void deleteById(int p);
+    public void deleteByProductId(Producto p);
 }

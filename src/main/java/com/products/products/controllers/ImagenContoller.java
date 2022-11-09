@@ -82,7 +82,7 @@ public class ImagenContoller {
         if (oProduct.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
-        	//imgService.deleteById(postId);
+        	imgService.deleteByProductId(p);
             return ResponseEntity.ok().build();
         }
     }

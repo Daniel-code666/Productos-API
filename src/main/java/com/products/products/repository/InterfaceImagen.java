@@ -19,5 +19,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InterfaceImagen extends JpaRepository<Imagen, Integer>{
     public List<?> findByProducto(Producto p);
-    //public void deleteByIdProduct (int id);
+    public void deleteByProducto(Producto p);
 }

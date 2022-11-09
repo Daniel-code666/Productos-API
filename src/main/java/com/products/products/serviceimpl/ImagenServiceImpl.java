@@ -7,6 +7,8 @@ package com.products.products.serviceimpl;
 import com.products.products.repository.InterfaceImagen;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.products.products.models.Imagen;
 import com.products.products.models.Producto;
 import com.products.products.service.ImagenService;
@@ -49,8 +51,9 @@ public class ImagenServiceImpl implements ImagenService{
     }
 
 	@Override
-	public void deleteByProductId(int id) {
-		//img.deleteByIdProduct(id);
+	@Transactional
+	public void deleteByProductId(Producto p) {
+		img.deleteByProducto(p);
 		
 	}
 }
