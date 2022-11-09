@@ -5,6 +5,7 @@
 package com.products.products.repository;
 
 import com.products.products.models.Imagen;
+import com.products.products.models.Producto;
 
 import java.util.List;
 
@@ -17,5 +18,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface InterfaceImagen extends JpaRepository<Imagen, Integer>{
-    public List<?> findById(int id); 
+    public List<?> findByProducto(Producto p);
+    //public void deleteByIdProduct (int id);
 }

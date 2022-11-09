@@ -33,6 +33,6 @@ public class Imagen {
 
     @JsonIgnore
     @ManyToOne(fetch =FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idProduct")
     private Producto producto;
 }

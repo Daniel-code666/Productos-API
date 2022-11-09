@@ -16,6 +16,7 @@ import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,7 +45,10 @@ public class ImagenContoller {
     @GetMapping(value = "/findByProduct/{id}")
     public ResponseEntity<?> findByPublicacion (@PathVariable(value = "id")int ProductId){
     	
-    	List<Imagen> imagen= (List<Imagen>) imgService.imgByPublc(ProductId);
+    	Producto p = new Producto();
+    	p.setIdProduct(ProductId);
+    	
+    	List<Imagen> imagen= (List<Imagen>) imgService.imgByPublc(p);
     	
         if (imagen.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -58,7 +62,7 @@ public class ImagenContoller {
     public ResponseEntity<?> save(@PathVariable(value = "id")int postId,@RequestParam("file") MultipartFile file) throws IOException {
     	Imagen objImg=new Imagen();
     	Producto prod= new Producto();
-    	prod.setId(postId);
+    	prod.setIdProduct(postId);
     	try {    		
 			byte[] byteImg =file.getBytes();
 			objImg.setProducto(prod);
@@ -67,8 +71,20 @@ public class ImagenContoller {
 		} catch (IOException e) {
 			e.printStackTrace();
 			return ResponseEntity.notFound().build();
-		}
-    	
-    	
+		}	
     }
+    
+    @DeleteMapping(value = "/deleteByPost/{id}")
+    public ResponseEntity<?> deleteByPost (@PathVariable(value = "id") int postId){
+    	Producto p = new Producto();
+    	p.setIdProduct(postId);
+    	List<Imagen> oProduct = (List<Imagen>) imgService.imgByPublc(p);
+        if (oProduct.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+        	//imgService.deleteById(postId);
+            return ResponseEntity.ok().build();
+        }
+    }
+    
 }

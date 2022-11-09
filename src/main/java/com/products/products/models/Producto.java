@@ -4,11 +4,14 @@
  */
 package com.products.products.models;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -24,7 +27,7 @@ public class Producto {
 	@Id
 	@Column
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int idProduct;
 	@Column
 	private String nombre;
 	//otra posible descripcion de una tabla para el momento de crearla desde el api
@@ -35,4 +38,7 @@ public class Producto {
 	private int precioUnidad;
 	@Column
 	private int stock;
+	
+	@OneToMany
+	private Set<Imagen> images;
 }

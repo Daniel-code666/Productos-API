@@ -8,6 +8,7 @@ import com.products.products.repository.InterfaceImagen;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.products.products.models.Imagen;
+import com.products.products.models.Producto;
 import com.products.products.service.ImagenService;
 import java.util.List;
 import java.util.Optional;
@@ -22,13 +23,13 @@ public class ImagenServiceImpl implements ImagenService{
     private InterfaceImagen img;
 
     @Override
-    public List<?> imgByPublc(int id) {
-        return img.findById(id);
+    public List<?> imgByPublc(Producto p) {
+        return img.findByProducto(p);
     }
 
     @Override
     public List<Imagen> imgAll() {
-        return img.findAll(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return img.findAll();
     }
 
     @Override
@@ -46,4 +47,10 @@ public class ImagenServiceImpl implements ImagenService{
     public void deleteById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+	@Override
+	public void deleteByProductId(int id) {
+		//img.deleteByIdProduct(id);
+		
+	}
 }
