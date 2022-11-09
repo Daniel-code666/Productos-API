@@ -36,7 +36,7 @@ public class ImagenServiceImpl implements ImagenService{
 
     @Override
     public Optional<?> oneImage(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return img.findById(id);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ImagenServiceImpl implements ImagenService{
 
     @Override
     public void deleteById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        img.deleteById(id);
     }
 
 	@Override
@@ -56,4 +56,11 @@ public class ImagenServiceImpl implements ImagenService{
 		img.deleteByProducto(p);
 		
 	}
+
+	@Override
+	public void deleteAll() {
+		img.deleteAll();
+	}
+
+	
 }

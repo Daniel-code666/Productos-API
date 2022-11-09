@@ -34,23 +34,20 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
+    
+    /*
+     * CREATE
+     **/
+    
     //crear un nuevo producto
     @PostMapping(value = "/create")
     public ResponseEntity<?> create(@RequestBody Producto producto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productoService.save(producto));
     }
-    //leer un solo registro
-
-    @GetMapping(value = "/findById/{id}")
-    public ResponseEntity<?> findById(@PathVariable(name = "id") int productId) {
-        Optional<Producto> oProduct = productoService.findById(productId);
-        if (!oProduct.isPresent()) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(oProduct);
-        }
-    }
-
+    
+    /*
+     * UPDATE
+     * */
     //Actualizar un producto
     @PutMapping(value = "update/{id}")
     public ResponseEntity<?> update(@RequestBody Producto producto, @PathVariable(value = "id") int productId) {
@@ -73,20 +70,22 @@ public class ProductoController {
         }
 
     }
+    
+    /*
+     * READ
+     * */
+    //leer un solo registro
 
-    //eliminar un usuario
-    @DeleteMapping(value = "/Delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable(value = "id") int productId) {
+    @GetMapping(value = "/findById/{id}")
+    public ResponseEntity<?> findById(@PathVariable(name = "id") int productId) {
         Optional<Producto> oProduct = productoService.findById(productId);
         if (!oProduct.isPresent()) {
             return ResponseEntity.notFound().build();
         } else {
-            productoService.deleteById(productId);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(oProduct);
         }
     }
-
-    //leer todos los usuarios
+    //leer todas las publicaciones
     @GetMapping(value = "/findAll")
     public List<Producto> readAll() {
         List<Producto> product = StreamSupport
@@ -103,4 +102,22 @@ public class ProductoController {
                 .collect(Collectors.toList());
         return product;
     }
+    
+    /*
+     * DELETE
+     * */
+    
+    //eliminar una publicacion
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable(value = "id") int productId) {
+        Optional<Producto> oProduct = productoService.findById(productId);
+        if (!oProduct.isPresent()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            productoService.deleteById(productId);
+            return ResponseEntity.ok().build();
+        }
+    }
+
+    
 }

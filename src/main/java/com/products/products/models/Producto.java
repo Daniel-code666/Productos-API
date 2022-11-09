@@ -39,6 +39,6 @@ public class Producto {
 	@Column
 	private int stock;
 	
-	@OneToMany
-	private Set<Imagen> images;
+	//@OneToMany
+	//private Set<Imagen> images;
 }

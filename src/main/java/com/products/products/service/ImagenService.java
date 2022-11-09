@@ -20,4 +20,6 @@ public interface ImagenService {
     public Imagen save(Imagen image);
     public void deleteById(int p);
     public void deleteByProductId(Producto p);
+    public void deleteAll();
+	
 }
