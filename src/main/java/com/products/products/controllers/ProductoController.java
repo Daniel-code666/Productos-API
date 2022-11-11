@@ -61,11 +61,22 @@ public class ProductoController {
             * 
             * BeanUtils.copyProperties(producto, oProduct.get());
             * */
-            oProduct.get().setNombre(producto.getNombre());
-            oProduct.get().setDescripcion(producto.getDescripcion());
-            oProduct.get().setPrecioUnidad(producto.getPrecioUnidad());
-            oProduct.get().setStock(producto.getStock());
-
+            if(producto.getNombre() != null){
+                oProduct.get().setNombre(producto.getNombre());
+            }
+            
+            if(producto.getDescripcion() != null){
+                oProduct.get().setDescripcion(producto.getDescripcion());
+            }
+            
+            if(producto.getPrecioUnidad() != 0){
+                oProduct.get().setPrecioUnidad(producto.getPrecioUnidad());
+            }
+            
+            if(producto.getStock() != 0){
+                oProduct.get().setStock(producto.getStock());
+            }
+            
             return ResponseEntity.status(HttpStatus.CREATED).body(productoService.save(oProduct.get()));
         }
 
