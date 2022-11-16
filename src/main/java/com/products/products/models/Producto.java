@@ -39,6 +39,7 @@ public class Producto {
 	@Column
 	private int stock;
 	
+        //comment
 	//@OneToMany
 	//private Set<Imagen> images;
 }

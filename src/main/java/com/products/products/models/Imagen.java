@@ -35,4 +35,6 @@ public class Imagen {
     @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "idProduct")
     private Producto producto;
+    
+    //comment
 }
