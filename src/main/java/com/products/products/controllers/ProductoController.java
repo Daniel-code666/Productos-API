@@ -82,6 +82,28 @@ public class ProductoController {
 
     }
     
+    @PutMapping(value = "updateResta/{id}/{cant}")
+    public boolean uptadeCantidad(@PathVariable(value = "id")int productId,@PathVariable(value = "cant")int cantidad ) {
+    	Optional<Producto> oProduct = productoService.findById(productId);
+        if (!oProduct.isPresent()) {
+            return false;
+        }else {
+        	
+            try {
+                if(cantidad != 0){
+                    int cant=oProduct.get().getStock()-cantidad;
+                    oProduct.get().setStock(cant);
+                }
+                productoService.save(oProduct.get());
+                return true;
+			} catch (Exception e) {
+				return false;
+			}
+
+        }
+    	
+    }
+    
     /*
      * READ
      * */
